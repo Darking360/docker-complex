@@ -22,3 +22,15 @@ after_success:
   - docker push darking360/docker-complex-worker:latest
   - docker push darking360/docker-complex-nginx:latest
 
+deploy:
+  provider: elasticbeanstalk
+  region: us-west-1
+  app: # Name of the app
+  env: # Env of the app
+  bucket_name: # Bucket in AWS S3
+  bucket_path: docker-multi
+  on:
+    branch: master
+  access_ket_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: $AWS_SECRET_KEY
