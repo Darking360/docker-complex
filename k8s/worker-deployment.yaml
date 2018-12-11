@@ -11,6 +11,12 @@ spec:
     metadata:
       labels:
         component: worker
-    containers:
-      - name: worker
-        image: darking360/docker-complex-worker:latest
+    spec:
+      containers:
+        - name: worker
+          image: darking360/docker-complex-worker:latest
+          env:
+            - name: REDIS_HOST
+              value: redis-cluster-ip-service
+            - name: REDIS_PORT
+              value: '6379'
